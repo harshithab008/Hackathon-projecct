@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+AI Mental Health Support Chatbot
+</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f7f6;
+color:#333;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(to right,#0f766e,#064e3b);
+color:white;
+padding:20px;
+text-align:center;
+}
+
+header h1{
+font-size:38px;
+}
+
+header p{
+margin-top:5px;
+font-size:18px;
+}
+
+/* NAVBAR */
+
+nav{
+background:#033b32;
+padding:12px;
+text-align:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:15px;
+font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:50px 20px;
+}
+
+.hero h2{
+font-size:45px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:20px;
+line-height:1.6;
+max-width:850px;
+margin:auto;
+}
+
+/* FEATURES */
+
+.features{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h3{
+color:#0f766e;
+margin-bottom:10px;
+}
+
+/* LOGIN + SIGNUP */
+
+.login-box{
+max-width:400px;
+margin:30px auto;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.login-box h2{
+margin-bottom:20px;
+color:#0f766e;
+}
+
+.login-box input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.login-box button{
+width:100%;
+padding:12px;
+background:#0f766e;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+/* SECTION */
+
+.section{
+background:white;
+margin:30px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* CHATBOT */
+
+.chat-box{
+height:350px;
+overflow-y:auto;
+border:1px solid #ccc;
+padding:10px;
+margin-bottom:10px;
+border-radius:10px;
+background:#fafafa;
+}
+
+.user{
+text-align:right;
+background:#dbeafe;
+padding:10px;
+margin:8px;
+border-radius:10px;
+}
+
+.bot{
+text-align:left;
+background:#dcfce7;
+padding:10px;
+margin:8px;
+border-radius:10px;
+}
+
+.input-area{
+display:flex;
+gap:10px;
+}
+
+.input-area input{
+flex:1;
+padding:12px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.input-area button{
+padding:12px 20px;
+background:#0f766e;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* REMINDER */
+
+.reminder-box input,
+.health-box input{
+padding:12px;
+margin:10px 0;
+width:100%;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.reminder-box button,
+.health-box button{
+padding:12px;
+background:#0f766e;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+width:100%;
+}
+
+/* EMERGENCY */
+
+.emergency{
+background:#fee2e2;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
+.emergency button{
+background:red;
+color:white;
+padding:15px;
+border:none;
+border-radius:8px;
+width:100%;
+font-size:18px;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+background:#064e3b;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<h1>
+AI Mental Health Support Chatbot
+</h1>
+
+<p>
+Support for Alzheimer's Patients
+</p>
+
+</header>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#">Features</a>
+<a href="#">Chatbot</a>
+<a href="#">Reminder</a>
+<a href="#">Emergency</a>
+<a href="#">Contact</a>
+
+</nav>
+
+<!-- SIGNUP + LOGIN -->
+
+<div class="login-box">
+
+<h2 id="formTitle">
+Signup
+</h2>
+
+<input type="text"
+id="username"
+placeholder="Enter Username">
+
+<input type="password"
+id="password"
+placeholder="Enter Password">
+
+<button onclick="signup()"
+id="mainButton">
+
+Signup
+
+</button>
+
+<p style="margin-top:15px;">
+
+<span id="toggleText">
+
+Already have an account?
+
+</span>
+
+<a href="#"
+onclick="toggleForm()"
+id="toggleLink">
+
+Login
+
+</a>
+
+</p>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h2>
+Companion for Better Mental Health
+</h2>
+
+<p>
+
+This AI chatbot supports Alzheimer’s patients
+with emotional care, medicine reminders,
+emergency alerts, memory exercises,
+and patient health tracking.
+
+</p>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="card">
+<h3>Medicine Reminder</h3>
+<p>
+Provides medicine notifications and reminders.
+</p>
+</div>
+
+<div class="card">
+<h3>Emotional Support</h3>
+<p>
+Helps reduce stress and loneliness.
+</p>
+</div>
+
+<div class="card">
+<h3>Memory Exercises</h3>
+<p>
+Engages users with memory activities.
+</p>
+</div>
+
+<div class="card">
+<h3>Caregiver Monitoring</h3>
+<p>
+Helps caregivers monitor patients.
+</p>
+</div>
+
+<div class="card">
+<h3>Emergency Alerts</h3>
+<p>
+Sends emergency notifications.
+</p>
+</div>
+
+<div class="card">
+<h3>Health Tracking</h3>
+<p>
+Tracks pulse, BP, and temperature.
+</p>
+</div>
+
+</section>
+
+<!-- CHATBOT -->
+
+<section class="section">
+
+<h2 style="margin-bottom:15px;color:#0f766e;">
+
+Chatbot Demo
+
+</h2>
+
+<div class="chat-box" id="chatBox">
+
+<div class="bot">
+
+Hello 👋 How are you feeling today?
+
+</div>
+
+</div>
+
+<div class="input-area">
+
+<input type="text"
+id="userInput"
+placeholder="Type your message...">
+
+<button onclick="sendMessage()">
+
+Send
+
+</button>
+
+</div>
+
+</section>
+
+<!-- REMINDER -->
+
+<section class="section reminder-box">
+
+<h2 style="margin-bottom:15px;color:#0f766e;">
+
+Medicine Reminder
+
+</h2>
+
+<input type="text"
+id="medicineName"
+placeholder="Enter Medicine Name">
+
+<input type="time"
+id="medicineTime">
+
+<button onclick="setReminder()">
+
+Set Reminder
+
+</button>
+
+</section>
+
+<!-- HEALTH TRACKING -->
+
+<section class="section health-box">
+
+<h2 style="margin-bottom:15px;color:#0f766e;">
+
+Patient Health Tracking
+
+</h2>
+
+<input type="number"
+id="pulse"
+placeholder="Enter Pulse Rate">
+
+<input type="number"
+id="bp"
+placeholder="Enter Blood Pressure">
+
+<input type="number"
+id="temp"
+placeholder="Enter Temperature">
+
+<button onclick="saveHealth()">
+
+Save Health Data
+
+</button>
+
+<p id="healthResult"
+style="margin-top:15px;">
+</p>
+
+</section>
+
+<!-- EMERGENCY -->
+
+<section class="section emergency">
+
+<h2 style="margin-bottom:15px;color:red;">
+
+Emergency Alert
+
+</h2>
+
+<p style="margin-bottom:15px;">
+
+Click below during emergency situations.
+
+</p>
+
+<button onclick="sendEmergency()">
+
+🚨 SEND EMERGENCY ALERT
+
+</button>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 AI Mental Health Support Chatbot Project
+
+</footer>
+
+<script>
+
+/* USER STORAGE */
+
+let savedUsername="";
+let savedPassword="";
+
+/* SIGNUP */
+
+function signup(){
+
+let username=
+document.getElementById("username").value;
+
+let password=
+document.getElementById("password").value;
+
+if(username==="" || password===""){
+
+alert("Please fill all fields");
+
+return;
+
+}
+
+savedUsername=username;
+savedPassword=password;
+
+alert("Signup Successful ✅");
+
+}
+
+/* LOGIN */
+
+function login(){
+
+let username=
+document.getElementById("username").value;
+
+let password=
+document.getElementById("password").value;
+
+if(username===savedUsername &&
+password===savedPassword){
+
+alert("Login Successful ✅");
+
+}
+
+else{
+
+alert("Invalid Username or Password");
+
+}
+
+}
+
+/* TOGGLE FORM */
+
+function toggleForm(){
+
+let title=
+document.getElementById("formTitle");
+
+let button=
+document.getElementById("mainButton");
+
+let toggleText=
+document.getElementById("toggleText");
+
+let toggleLink=
+document.getElementById("toggleLink");
+
+if(title.innerText==="Signup"){
+
+title.innerText="Login";
+
+button.innerText="Login";
+
+button.setAttribute(
+"onclick",
+"login()"
+);
+
+toggleText.innerText=
+"Don't have an account?";
+
+toggleLink.innerText=
+"Signup";
+
+}
+
+else{
+
+title.innerText="Signup";
+
+button.innerText="Signup";
+
+button.setAttribute(
+"onclick",
+"signup()"
+);
+
+toggleText.innerText=
+"Already have an account?";
+
+toggleLink.innerText=
+"Login";
+
+}
+
+}
+
+/* CHATBOT */
+
+async function sendMessage() {
+    const input = document.getElementById("userInput");
+    const chatBox = document.getElementById("chatBox");
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    const userMessage = document.createElement("div");
+    userMessage.className = "user";
+    userMessage.innerText = message;
+    chatBox.appendChild(userMessage);
+
+    input.value = "";
+
+    const botMessage = document.createElement("div");
+    botMessage.className = "bot";
+    botMessage.innerText = "Thinking...";
+    chatBox.appendChild(botMessage);
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Server error");
+        }
+
+        botMessage.innerText = data.reply || "I couldn't generate a reply.";
+    } catch (error) {
+        console.error("Chat API error:", error);
+        botMessage.innerText =
+            "Unable to connect to the chatbot. Please try again.";
+    }
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+/* REMINDER */
+
+function setReminder(){
+
+let medicine=
+document.getElementById("medicineName").value;
+
+let time=
+document.getElementById("medicineTime").value;
+
+if(Notification.permission!=="granted"){
+
+Notification.requestPermission();
+
+}
+
+alert(
+"Reminder Set for "
++ medicine +
+" at " + time
+);
+
+setInterval(function(){
+
+let now=new Date();
+
+let currentTime=
+String(now.getHours()).padStart(2,'0')
++ ":" +
+String(now.getMinutes()).padStart(2,'0');
+
+if(currentTime===time){
+
+new Notification(
+"Medicine Reminder 💊",
+{
+body:
+"Time to take " + medicine
+}
+);
+
+alert(
+"Take your medicine: "
++ medicine
+);
+
+}
+
+},1000);
+
+}
+
+/* HEALTH TRACKING */
+
+function saveHealth(){
+
+let pulse=
+document.getElementById("pulse").value;
+
+let bp=
+document.getElementById("bp").value;
+
+let temp=
+document.getElementById("temp").value;
+
+document.getElementById("healthResult")
+.innerHTML=
+
+"✅ Health Data Saved<br><br>"
++
+"Pulse Rate: "
++ pulse +
+" bpm<br>"
++
+"Blood Pressure: "
++ bp +
+"<br>"
++
+"Temperature: "
++ temp +
+" °C";
+
+}
+
+/* EMERGENCY */
+
+function sendEmergency(){
+
+alert(
+"🚨 Emergency Alert Sent!"
+);
+
+if(Notification.permission!=="granted"){
+
+Notification.requestPermission();
+
+}
+
+new Notification(
+"Emergency Alert 🚨",
+{
+body:
+"Patient needs immediate help!"
+}
+);
+
+}
+
+</script>
+
+</body>
+</html>
